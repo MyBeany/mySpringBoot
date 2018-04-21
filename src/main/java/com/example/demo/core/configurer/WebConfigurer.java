@@ -16,10 +16,9 @@ import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.NoHandlerFoundException;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -37,8 +36,18 @@ public class WebConfigurer extends WebMvcConfigurationSupport {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(WebConfigurer.class);
 
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("swagger-ui.html")
+                .addResourceLocations("classpath:/META-INF/resources/");
+        registry.addResourceHandler("/webjars/**")
+                .addResourceLocations("classpath:/META-INF/resources/webjars/");
+        super.addResourceHandlers(registry);
+    }
+
     /**
      * 修改自定义消息转换器
+     *
      * @param converters
      */
     @Override
@@ -48,7 +57,7 @@ public class WebConfigurer extends WebMvcConfigurationSupport {
         FastJsonConfig config = new FastJsonConfig();
         config.setSerializerFeatures(
                 // String null -> ""
-				SerializerFeature.WriteNullStringAsEmpty,
+                SerializerFeature.WriteNullStringAsEmpty,
                 // Number null -> 0
                 SerializerFeature.WriteNullNumberAsZero,
                 //禁止循环引用
@@ -66,10 +75,11 @@ public class WebConfigurer extends WebMvcConfigurationSupport {
 
     /**
      * 创建异常处理
+     *
      * @return
      */
-    private HandlerExceptionResolver getHandlerExceptionResolver(){
-        HandlerExceptionResolver handlerExceptionResolver = new HandlerExceptionResolver(){
+    private HandlerExceptionResolver getHandlerExceptionResolver() {
+        HandlerExceptionResolver handlerExceptionResolver = new HandlerExceptionResolver() {
             @Override
             public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response,
                                                  Object handler, Exception e) {
@@ -83,12 +93,13 @@ public class WebConfigurer extends WebMvcConfigurationSupport {
 
     /**
      * 根据异常类型确定返回数据
+     *
      * @param request
      * @param handler
      * @param e
      * @return
      */
-    private RetResult<Object> getResuleByHeandleException(HttpServletRequest request, Object handler, Exception e){
+    private RetResult<Object> getResuleByHeandleException(HttpServletRequest request, Object handler, Exception e) {
         RetResult<Object> result = new RetResult<>();
         if (e instanceof ServiceException) {
             result.setCode(RetCode.FAIL).setMsg(e.getMessage()).setData(null);
@@ -103,7 +114,7 @@ public class WebConfigurer extends WebMvcConfigurationSupport {
         if (handler instanceof HandlerMethod) {
             HandlerMethod handlerMethod = (HandlerMethod) handler;
             message = String.format("接口 [%s] 出现异常，方法：%s.%s，异常摘要：%s", request.getRequestURI(),
-                    handlerMethod.getBean().getClass().getName(), handlerMethod.getMethod() .getName(), e.getMessage());
+                    handlerMethod.getBean().getClass().getName(), handlerMethod.getMethod().getName(), e.getMessage());
         } else {
             message = e.getMessage();
         }
@@ -112,10 +123,10 @@ public class WebConfigurer extends WebMvcConfigurationSupport {
     }
 
     /**
-     * @Title: responseResult
-     * @Description: 响应结果
      * @param response
      * @param result
+     * @Title: responseResult
+     * @Description: 响应结果
      * @Reutrn void
      */
     private void responseResult(HttpServletResponse response, RetResult<Object> result) {
@@ -123,7 +134,7 @@ public class WebConfigurer extends WebMvcConfigurationSupport {
         response.setHeader("Content-type", "application/json;charset=UTF-8");
         response.setStatus(200);
         try {
-            response.getWriter().write(JSON.toJSONString(result,SerializerFeature.WriteMapNullValue));
+            response.getWriter().write(JSON.toJSONString(result, SerializerFeature.WriteMapNullValue));
         } catch (IOException ex) {
             LOGGER.error(ex.getMessage());
         }
