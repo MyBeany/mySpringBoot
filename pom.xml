@@ -86,11 +86,21 @@
 			<artifactId>spring-boot-starter-aop</artifactId>
 		</dependency>
 
-		<!--mybatis分页依赖-->
+		<!--mybatis分页依赖
+		https://github.com/pagehelper/pagehelper-spring-boot-->
 		<dependency>
 			<groupId>com.github.pagehelper</groupId>
 			<artifactId>pagehelper-spring-boot-starter</artifactId>
 			<version>1.2.5</version>
+		</dependency>
+
+		<!--单表通用增删改查，文档地址  源码地址：https://github.com/abel533/Mapper
+		文档地址： https://mapperhelper.github.io
+		使用文档 https://github.com/abel533/Mapper/wiki-->
+		<dependency>
+			<groupId>tk.mybatis</groupId>
+			<artifactId>mapper-spring-boot-starter</artifactId>
+			<version>2.0.1</version>
 		</dependency>
 	</dependencies>
 

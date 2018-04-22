@@ -1,5 +1,8 @@
 package com.example.demo.model;
 
+import javax.persistence.Column;
+import javax.persistence.Id;
+
 /**
  * @author 张瑶
  * @Description:
@@ -10,18 +13,20 @@ public class UserInfo {
     /**
      * 主键
      */
-    private Integer id;
+    @Id
+    private String id;
 
     /**
      * 用户名
      */
+    @Column(name = "user_name")
     private String userName;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

@@ -1,24 +1,19 @@
 package com.example.demo.core.configurer;
 
-import com.github.pagehelper.PageHelper;
-import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
-import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
+import tk.mybatis.spring.mapper.MapperScannerConfigurer;
 
 import javax.sql.DataSource;
-import java.util.Properties;
 
 /**
- * @ClassName: MybatisConfigurer
  * @Description: Mybatis翻页插件配置和XML文件配置等
  * @author 张瑶
- * @date 2018年1月20日 下午4:03:46
- *
+ * @date 2018/4/18 11:50
  */
 @Configuration
 public class MybatisConfigurer {
