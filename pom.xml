@@ -89,8 +89,8 @@
 		<!--mybatis分页依赖-->
 		<dependency>
 			<groupId>com.github.pagehelper</groupId>
-			<artifactId>pagehelper</artifactId>
-			<version>4.2.1</version>
+			<artifactId>pagehelper-spring-boot-starter</artifactId>
+			<version>1.2.5</version>
 		</dependency>
 	</dependencies>
 

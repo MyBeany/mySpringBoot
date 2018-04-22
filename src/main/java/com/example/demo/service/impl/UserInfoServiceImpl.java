@@ -33,7 +33,7 @@ public class UserInfoServiceImpl implements UserInfoService{
 
     @Override
     public PageInfo<UserInfo> selectAll(Integer page, Integer size) {
-        PageHelper.startPage(page, size);
+        PageHelper.startPage(page, size, "id desc");
         List<UserInfo> userInfoList = userInfoMapper.selectAll();
         PageInfo<UserInfo> pageInfo = new PageInfo<>(userInfoList);
         return pageInfo;
