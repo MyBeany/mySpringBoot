@@ -14,5 +14,6 @@
 - [ **四：自定义消息转换器** ](https://juejin.im/post/5ad811e66fb9a0460138ceb1)
 - [ **五：添加全局异常处理** ](https://juejin.im/post/5ad9bad1518825671951d967)
 - [ **六：添加Swagger2来在线自动生成接口的文档+测试功能** ](https://juejin.im/post/5adb00195188256736147e03)
+- [ **七：添加PageHelper分页查询功能** ](https://juejin.im/post/5adc585c6fb9a07ac23a5397)
 
  **写文章不易，如对您有帮助，请帮忙点下Star** 

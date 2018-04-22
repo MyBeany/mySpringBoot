@@ -17,4 +17,10 @@
         where id = #{id,jdbcType=VARCHAR}
     </select>
 
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from user_info
+    </select>
+
 </mapper>

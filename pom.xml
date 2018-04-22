@@ -53,8 +53,9 @@
 			<version>1.1.9</version>
 		</dependency>
 
-		<!--Spring Boot-Actuator  项目健康检查
-			https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator -->
+		<!--Spring Boot-Actuator  项目健康检查 -->
+		<!--关于springboot2.0  actuator新特性
+		 http://blog.didispace.com/Spring-Boot-2.0-Migration-Guide/  -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
@@ -77,6 +78,19 @@
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>2.4.0</version>
+		</dependency>
+
+		<!--aop切面依赖-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
+
+		<!--mybatis分页依赖-->
+		<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper</artifactId>
+			<version>4.2.1</version>
 		</dependency>
 	</dependencies>
 
