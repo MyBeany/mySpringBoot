@@ -1,5 +1,6 @@
 package com.example.demo.core.configurer;
 
+import com.example.demo.core.constant.ProjectConstant;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -25,7 +26,7 @@ public class SwaggerConfigurer {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.example.demo.controller"))
+                .apis(RequestHandlerSelectors.basePackage(ProjectConstant.CONTROLLER_PACKAGE))
                 .paths(PathSelectors.any())
                 .build();
     }

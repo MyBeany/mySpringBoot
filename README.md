@@ -16,5 +16,6 @@
 - [ **六：添加Swagger2来在线自动生成接口的文档+测试功能** ](https://juejin.im/post/5adb00195188256736147e03)
 - [ **七：添加PageHelper分页查询功能** ](https://juejin.im/post/5adc90726fb9a07ab5087c7f)
 - [ **八：集成通用 Mapper功能** ](https://juejin.im/post/5adc9fd1518825671b021f7d)
+- [ **九：集成generator自动生成model，xml，dao功能** ](https://juejin.im/post/5adff22f6fb9a07ac76e79a3)
 
  **写文章不易，如对您有帮助，请帮忙点下Star** 

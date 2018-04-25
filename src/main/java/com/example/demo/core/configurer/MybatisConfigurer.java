@@ -1,5 +1,6 @@
 package com.example.demo.core.configurer;
 
+import com.example.demo.core.constant.ProjectConstant;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.context.annotation.Bean;
@@ -22,7 +23,7 @@ public class MybatisConfigurer {
 	public SqlSessionFactory sqlSessionFactoryBean(DataSource dataSource) throws Exception {
 		SqlSessionFactoryBean factory = new SqlSessionFactoryBean();
 		factory.setDataSource(dataSource);
-		factory.setTypeAliasesPackage("com.example.demo.model");
+		factory.setTypeAliasesPackage(ProjectConstant.MODEL_PACKAGE);
 		// 添加XML目录
 		ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
 		factory.setMapperLocations(resolver.getResources("classpath:mapper/*.xml"));
@@ -33,7 +34,7 @@ public class MybatisConfigurer {
 	public MapperScannerConfigurer mapperScannerConfigurer() {
 		MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();
 		mapperScannerConfigurer.setSqlSessionFactoryBeanName("sqlSessionFactoryBean");
-		mapperScannerConfigurer.setBasePackage("com.example.demo.dao");
+		mapperScannerConfigurer.setBasePackage(ProjectConstant.MAPPER_PACKAGE);
 		return mapperScannerConfigurer;
 	}
 }
