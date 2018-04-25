@@ -17,5 +17,6 @@
 - [ **七：添加PageHelper分页查询功能** ](https://juejin.im/post/5adc90726fb9a07ab5087c7f)
 - [ **八：集成通用 Mapper功能** ](https://juejin.im/post/5adc9fd1518825671b021f7d)
 - [ **九：集成generator自动生成model，xml，dao功能** ](https://juejin.im/post/5adff22f6fb9a07ac76e79a3)
+- [ **十：通过freemarker自动生成service，serviceImpl，controller功能** ](https://juejin.im/post/5ae02c75f265da0ba76f67b3)
 
  **写文章不易，如对您有帮助，请帮忙点下Star** 

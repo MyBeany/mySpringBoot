@@ -10,7 +10,7 @@ import com.alibaba.druid.support.http.WebStatFilter;
 /**
  * @author 张瑶
  * @Description:Druid监控配置
- * @time 2018/4/18 15:30
+ * @date 2018/4/18 15:30
  */
 @Configuration
 public class DruidMonitorConfigurer {
