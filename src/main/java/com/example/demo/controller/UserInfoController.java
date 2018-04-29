@@ -71,5 +71,13 @@ public class UserInfoController {
         return RetResponse.makeOKRsp(pageInfo);
     }
 
+    @PostMapping("/selectAlla")
+    public RetResult<PageInfo<UserInfo>> selectAlla(@RequestParam(defaultValue = "0") Integer page,
+                                                   @RequestParam(defaultValue = "0") Integer size) {
+        List<UserInfo> list = userInfoService.selectAlla(page,size);
+        PageInfo<UserInfo> pageInfo = new PageInfo<>(list);
+        return RetResponse.makeOKRsp(pageInfo);
+    }
+
 
 }
