@@ -42,6 +42,8 @@ public class WebConfigurer extends WebMvcConfigurationSupport {
                 .addResourceLocations("classpath:/META-INF/resources/");
         registry.addResourceHandler("/webjars/**")
                 .addResourceLocations("classpath:/META-INF/resources/webjars/");
+        registry.addResourceHandler("/favicon.ico")
+                .addResourceLocations("classpath:/META-INF/resources/favicon.ico");
         super.addResourceHandlers(registry);
     }
 
