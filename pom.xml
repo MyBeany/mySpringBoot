@@ -138,6 +138,14 @@
 			<artifactId>freemarker</artifactId>
 			<version>2.3.28</version>
 		</dependency>
+
+		<!-- 添加redis
+		 http://www.redis.net.cn/order/-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-redis</artifactId>
+			<version>1.4.5.RELEASE</version>
+		</dependency>
 	</dependencies>
 
 	<build>

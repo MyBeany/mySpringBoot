@@ -29,7 +29,7 @@ import java.util.List;
 /**
  * @author 张瑶
  * @Description:
- * @time 2018/4/19 10:42
+ * @date 2018/4/19 10:42
  */
 @Configuration
 public class WebConfigurer extends WebMvcConfigurationSupport {

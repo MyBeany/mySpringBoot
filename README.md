@@ -19,5 +19,6 @@
 - [ **九：集成generator自动生成model，xml，dao功能** ](https://juejin.im/post/5adff22f6fb9a07ac76e79a3)
 - [ **十：通过freemarker自动生成service，serviceImpl，controller功能** ](https://juejin.im/post/5ae02c75f265da0ba76f67b3)
 - [ **十一：配置多数据源功能** ](https://juejin.im/post/5ae5aaba518825673c61aef9)
+- [ **十二：添加redis缓存功能** ](https://juejin.im/post/5ae6a7636fb9a07ac3633ed8)
 
  **写文章不易，如对您有帮助，请帮忙点下Star** 
