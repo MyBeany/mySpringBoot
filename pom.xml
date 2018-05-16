@@ -146,6 +146,19 @@
 			<artifactId>spring-boot-starter-redis</artifactId>
 			<version>1.4.5.RELEASE</version>
 		</dependency>
+
+		<!--RabbitMq  依赖-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-amqp</artifactId>
+		</dependency>
+
+		<!--  解析html    http://www.open-open.com/jsoup/ -->
+		<dependency>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+			<version>1.10.2</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -164,6 +177,15 @@
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
+		</repository>
+
+		<repository>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<id>jcenter-releases</id>
+			<name>jcenter</name>
+			<url>http://jcenter.bintray.com</url>
 		</repository>
 	</repositories>
 
