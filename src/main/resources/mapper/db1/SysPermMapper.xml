@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.db1.SysPermMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.model.SysPerm">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="perm_name" jdbcType="VARCHAR" property="permName" />
+    <result column="perm_desc" jdbcType="VARCHAR" property="permDesc" />
+    <result column="perm_value" jdbcType="VARCHAR" property="permValue" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="is_disable" jdbcType="INTEGER" property="isDisable" />
+  </resultMap>
+</mapper>

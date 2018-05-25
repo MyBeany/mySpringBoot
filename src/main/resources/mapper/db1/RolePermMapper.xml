@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.db1.RolePermMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.model.RolePerm">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="perm_id" jdbcType="VARCHAR" property="permId" />
+    <result column="role_id" jdbcType="VARCHAR" property="roleId" />
+  </resultMap>
+
+  <select id="getPermsByUserId" resultType="string" parameterType="string">
+    SELECT DISTINCT
+        p.perm_value
+    FROM
+        sys_perm p,
+        role_perm rp,
+        user_role ur
+    WHERE
+        p.id = rp.perm_id
+    AND ur.role_id = rp.role_id
+    AND ur.user_id = #{userId,jdbcType=VARCHAR}
+    AND p.is_disable = 0
+  </select>
+</mapper>

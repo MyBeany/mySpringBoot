@@ -159,6 +159,13 @@
 			<artifactId>jsoup</artifactId>
 			<version>1.10.2</version>
 		</dependency>
+
+		<!--shiro权限管理依赖-->
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-spring-boot-web-starter</artifactId>
+			<version>1.4.0-RC2</version>
+		</dependency>
 	</dependencies>
 
 	<build>

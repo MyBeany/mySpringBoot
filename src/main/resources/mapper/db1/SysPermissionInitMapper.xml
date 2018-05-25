@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.db1.SysPermissionInitMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.model.SysPermissionInit">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="permission_init" jdbcType="VARCHAR" property="permissionInit" />
+    <result column="sort" jdbcType="INTEGER" property="sort" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, url, permission_init, sort
+  </sql>
+
+  <select id="selectAllOrderBySort" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List"/>
+    from sys_permission_init
+    order by sort desc
+  </select>
+</mapper>

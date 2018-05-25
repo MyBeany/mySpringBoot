@@ -1,7 +1,7 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.core.universal.AbstractService;
 import com.example.demo.core.ret.ServiceException;
+import com.example.demo.core.universal.AbstractService;
 import com.example.demo.dao.db1.UserInfoMapper;
 import com.example.demo.model.UserInfo;
 import com.example.demo.service.UserInfoService;
@@ -33,5 +33,18 @@ public class UserInfoServiceImpl extends AbstractService<UserInfo> implements Us
     @Override
     public List<UserInfo> selectAlla(int pageNum, int pageSize) {
         return userInfoMapper.selectAll(pageNum,pageSize);
+    }
+
+    /**
+     * 模拟查询返回用户信息
+     * @param uname
+     * @return
+     */
+    @Override
+    public UserInfo findUserByName(String uname){
+        UserInfo u = new UserInfo();
+        u.setUserName(uname);
+        UserInfo userInfo = userInfoMapper.selectOne(u);
+        return userInfo;
     }
 }

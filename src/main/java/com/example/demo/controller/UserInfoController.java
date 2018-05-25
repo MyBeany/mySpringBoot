@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.core.ret.RetResponse;
 import com.example.demo.core.ret.RetResult;
+import com.example.demo.core.ret.ServiceException;
 import com.example.demo.model.UserInfo;
 import com.example.demo.service.UserInfoService;
 import com.github.pagehelper.PageHelper;
@@ -10,10 +11,11 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -64,8 +66,8 @@ public class UserInfoController {
     })
     @PostMapping("/selectAll")
     public RetResult<PageInfo<UserInfo>> selectAll(@RequestParam(defaultValue = "0") Integer page,
-                                          @RequestParam(defaultValue = "0") Integer size) {
-        PageHelper.startPage(page,size);
+                                                   @RequestParam(defaultValue = "0") Integer size) {
+        PageHelper.startPage(page, size);
         List<UserInfo> userInfoList = userInfoService.selectAll();
         PageInfo<UserInfo> pageInfo = new PageInfo<>(userInfoList);
         return RetResponse.makeOKRsp(pageInfo);
@@ -73,11 +75,24 @@ public class UserInfoController {
 
     @PostMapping("/selectAlla")
     public RetResult<PageInfo<UserInfo>> selectAlla(@RequestParam(defaultValue = "0") Integer page,
-                                                   @RequestParam(defaultValue = "0") Integer size) {
-        List<UserInfo> list = userInfoService.selectAlla(page,size);
+                                                    @RequestParam(defaultValue = "0") Integer size) {
+        List<UserInfo> list = userInfoService.selectAlla(page, size);
         PageInfo<UserInfo> pageInfo = new PageInfo<>(list);
         return RetResponse.makeOKRsp(pageInfo);
     }
 
+    @PostMapping("/login")
+    public RetResult<UserInfo> login(String userName, String password) {
+        Subject currentUser = SecurityUtils.getSubject();
+        //登录
+        try {
+            currentUser.login(new UsernamePasswordToken(userName, password));
+        }catch (IncorrectCredentialsException i){
+            throw new ServiceException("密码输入错误");
+        }
+        //从session取出用户信息
+        UserInfo user = (UserInfo) currentUser.getPrincipal();
+        return RetResponse.makeOKRsp(user);
+    }
 
 }
