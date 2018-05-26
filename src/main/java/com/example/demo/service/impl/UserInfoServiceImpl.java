@@ -35,16 +35,4 @@ public class UserInfoServiceImpl extends AbstractService<UserInfo> implements Us
         return userInfoMapper.selectAll(pageNum,pageSize);
     }
 
-    /**
-     * 模拟查询返回用户信息
-     * @param uname
-     * @return
-     */
-    @Override
-    public UserInfo findUserByName(String uname){
-        UserInfo u = new UserInfo();
-        u.setUserName(uname);
-        UserInfo userInfo = userInfoMapper.selectOne(u);
-        return userInfo;
-    }
 }

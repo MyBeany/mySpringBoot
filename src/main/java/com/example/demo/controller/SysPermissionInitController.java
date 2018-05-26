@@ -1,10 +1,9 @@
 package com.example.demo.controller;
 
-import com.example.demo.core.ret.RetResult;
 import com.example.demo.core.ret.RetResponse;
+import com.example.demo.core.ret.RetResult;
 import com.example.demo.core.utils.ApplicationUtils;
 import com.example.demo.model.SysPermissionInit;
-import com.example.demo.service.ShiroService;
 import com.example.demo.service.SysPermissionInitService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -27,9 +26,6 @@ public class SysPermissionInitController {
 
     @Resource
     private SysPermissionInitService sysPermissionInitService;
-
-    @Resource
-    private ShiroService shiroService;
 
     @PostMapping("/insert")
     public RetResult<Integer> insert(SysPermissionInit sysPermissionInit) throws Exception{
@@ -69,11 +65,5 @@ public class SysPermissionInitController {
         List<SysPermissionInit> list = sysPermissionInitService.selectAll();
         PageInfo<SysPermissionInit> pageInfo = new PageInfo<SysPermissionInit>(list);
         return RetResponse.makeOKRsp(pageInfo);
-    }
-
-
-    @PostMapping("/aaa")
-    public void aaa() throws Exception {
-        shiroService.updatePermission();
     }
 }

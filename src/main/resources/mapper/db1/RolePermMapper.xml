@@ -10,17 +10,18 @@
     <result column="role_id" jdbcType="VARCHAR" property="roleId" />
   </resultMap>
 
+
   <select id="getPermsByUserId" resultType="string" parameterType="string">
-    SELECT DISTINCT
+    select distinct
         p.perm_value
-    FROM
+    from
         sys_perm p,
         role_perm rp,
         user_role ur
-    WHERE
+    where
         p.id = rp.perm_id
-    AND ur.role_id = rp.role_id
-    AND ur.user_id = #{userId,jdbcType=VARCHAR}
-    AND p.is_disable = 0
+        and ur.role_id = rp.role_id
+        and ur.user_id = #{userId,jdbcType=VARCHAR}
+        and p.is_disable = 0
   </select>
 </mapper>

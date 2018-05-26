@@ -25,20 +25,10 @@ public class GlobalExceptionResolver {
 
     private final Logger logger = LoggerFactory.getLogger(GlobalExceptionResolver.class);
 
-    /**
-     * 不满足@RequiresGuest注解时抛出的异常信息
-     */
-    private static final String GUEST_ONLY = "Attempting to perform a guest-only operation";
-
     @ExceptionHandler(UnauthenticatedException.class)
     public void page401(HttpServletResponse response, UnauthenticatedException e) {
         RetResult<Object> result = new RetResult<>();
-        String eMsg = e.getMessage();
-        if (StringUtils.startsWithIgnoreCase(eMsg,GUEST_ONLY)){
-            result.setCode(RetCode.UNAUTHZ).setMsg("只允许游客访问，若您已登录，请先退出登录").setData(null);
-        }else{
             result.setCode(RetCode.UNAUTHEN).setMsg("用户未登录").setData(null);
-        }
         responseResult(response, result);
     }
 

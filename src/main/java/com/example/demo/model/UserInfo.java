@@ -28,6 +28,11 @@ public class UserInfo {
     private String password;
 
     /**
+     * 加密盐值
+     */
+    private String salt;
+
+    /**
      * 用户所有角色值，用于shiro做角色权限的判断
      */
     @Transient
@@ -39,10 +44,7 @@ public class UserInfo {
     @Transient
     private Set<String> perms;
 
-    /**
-     * 加密盐值
-     */
-    private String salt;
+
 
     public String getId() {
         return id;

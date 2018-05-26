@@ -15,6 +15,4 @@ public interface UserInfoService extends Service<UserInfo>{
 
     List<UserInfo> selectAlla(int pageNum, int pageSize);
 
-    UserInfo findUserByName(String uname);
-
 }

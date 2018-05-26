@@ -20,6 +20,7 @@
 - [ **十：通过freemarker自动生成service，serviceImpl，controller功能** ](https://juejin.im/post/5ae02c75f265da0ba76f67b3)
 - [ **十一：配置多数据源功能** ](https://juejin.im/post/5ae5aaba518825673c61aef9)
 - [ **十二：添加redis缓存功能** ](https://juejin.im/post/5ae6a7636fb9a07ac3633ed8)
-- [ **十二：添加防止XSS攻击功能** ](https://juejin.im/post/5afc2406518825426d2d512a)
+- [ **十三：添加防止XSS攻击功能** ](https://juejin.im/post/5afc2406518825426d2d512a)
+- [ **十四：添加shiro权限保护接口功能** ](https://juejin.im/post/5b08af10f265da0dd71690f5)
 
  **写文章不易，如对您有帮助，请帮忙点下Star** 

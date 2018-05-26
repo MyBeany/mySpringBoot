@@ -31,7 +31,9 @@ public class CustomRealm extends AuthorizingRealm {
     @Autowired
     private RolePermService rolePermService;
 
-    //告诉shiro如何根据获取到的用户信息中的密码和盐值来校验密码
+    /**
+     * 告诉shiro如何根据获取到的用户信息中的密码和盐值来校验密码
+     */
     {
         //设置用于匹配密码的CredentialsMatcher
         HashedCredentialsMatcher hashMatcher = new HashedCredentialsMatcher();
@@ -42,7 +44,9 @@ public class CustomRealm extends AuthorizingRealm {
     }
 
 
-    //定义如何获取用户的角色和权限的逻辑，给shiro做权限判断
+    /**
+     *  定义如何获取用户的角色和权限的逻辑，给shiro做权限判断
+     */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         if (principals == null) {
@@ -55,7 +59,9 @@ public class CustomRealm extends AuthorizingRealm {
         return info;
     }
 
-    //定义如何获取用户信息的业务逻辑，给shiro做登录
+    /**
+     * 定义如何获取用户信息的业务逻辑，给shiro做登录
+     */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
         UsernamePasswordToken upToken = (UsernamePasswordToken) token;
@@ -63,7 +69,7 @@ public class CustomRealm extends AuthorizingRealm {
         if (username == null) {
             throw new AccountException("Null usernames are not allowed by this realm.");
         }
-        UserInfo userDB = userService.findUserByName(username);
+        UserInfo userDB = userService.selectBy("userName",username);
         if (userDB == null) {
             throw new UnknownAccountException("No account found for admin [" + username + "]");
         }

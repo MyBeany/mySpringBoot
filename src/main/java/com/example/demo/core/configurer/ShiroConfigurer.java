@@ -19,7 +19,9 @@ public class ShiroConfigurer {
     @Resource
     private SysPermissionInitService sysPermissionInitService;
 
-    //注入自定义的realm，告诉shiro如何获取用户信息来做登录或权限控制
+    /**
+     * 注入自定义的realm，告诉shiro如何获取用户信息来做登录或权限控制
+     */
     @Bean
     public Realm realm() {
         return new CustomRealm();
