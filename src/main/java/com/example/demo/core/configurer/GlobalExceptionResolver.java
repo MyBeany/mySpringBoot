@@ -31,7 +31,7 @@ public class GlobalExceptionResolver {
     private static final String GUEST_ONLY = "Attempting to perform a guest-only operation";
 
     @ExceptionHandler(UnauthenticatedException.class)
-    public void page401(HttpServletResponse response, ServiceException e) {
+    public void page401(HttpServletResponse response, UnauthenticatedException e) {
         RetResult<Object> result = new RetResult<>();
         String eMsg = e.getMessage();
         if (StringUtils.startsWithIgnoreCase(eMsg,GUEST_ONLY)){
