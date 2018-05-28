@@ -22,5 +22,6 @@
 - [ **十二：添加redis缓存功能** ](https://juejin.im/post/5ae6a7636fb9a07ac3633ed8)
 - [ **十三：添加防止XSS攻击功能** ](https://juejin.im/post/5afc2406518825426d2d512a)
 - [ **十四：添加shiro权限保护接口功能** ](https://juejin.im/post/5b08af10f265da0dd71690f5)
+- [ **十五：添加aop异步记录日志功能** ](https://juejin.im/post/5b0c01fd51882515870fcd55)
 
  **写文章不易，如对您有帮助，请帮忙点下Star** 

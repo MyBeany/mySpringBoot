@@ -16,4 +16,31 @@
     <result column="user_id" jdbcType="VARCHAR" property="userId" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
+
+  <sql id="Base_Column_List">
+    id, description, method, log_type, request_ip, exception_code,
+    exception_detail, params, user_id, create_time
+  </sql>
+
+  <insert id="insertByBatch" parameterType="java.util.List" >
+    insert into system_log (
+      id, description, method, log_type, request_ip, exception_code,
+      exception_detail, params, user_id, create_time
+    )
+    values
+    <foreach collection="list" item="item" index= "index" separator =",">
+      (
+        #{item.id,jdbcType=VARCHAR},
+        #{item.description,jdbcType=VARCHAR},
+        #{item.method,jdbcType=VARCHAR},
+        #{item.logType,jdbcType=VARCHAR},
+        #{item.requestIp,jdbcType=VARCHAR},
+        #{item.exceptionCode,jdbcType=VARCHAR},
+        #{item.exceptionDetail,jdbcType=VARCHAR},
+        #{item.params,jdbcType=VARCHAR},
+        #{item.userId,jdbcType=VARCHAR},
+        #{item.createTime,jdbcType=TIMESTAMP}
+      )
+    </foreach>
+  </insert>
 </mapper>

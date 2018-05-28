@@ -57,6 +57,18 @@ public class SystemLog {
     private Date createTime;
 
     /**
+     * 日志类型为正常
+     */
+    @Transient
+    public static final String LOGINFO = "0";
+
+    /**
+     * 日志类型为异常
+     */
+    @Transient
+    public static final String LOGERROR = "1";
+
+    /**
      * @return id
      */
     public String getId() {
