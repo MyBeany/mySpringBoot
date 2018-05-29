@@ -64,7 +64,7 @@ public class SystemLogConsumer implements Runnable{
         }
         if (!systemLogs.isEmpty()) {
             try {
-                Thread.sleep(10000);
+//                Thread.sleep(10000);
                 systemLogService.insertByBatch(systemLogs);
             }catch (Exception e){
                 logger.error("异常信息:{}", e.getMessage());
