@@ -6,18 +6,15 @@ import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter4;
 import com.example.demo.core.ret.RetCode;
 import com.example.demo.core.ret.RetResult;
-import com.example.demo.core.ret.ServiceException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.web.method.HandlerMethod;
-import org.springframework.web.servlet.HandlerExceptionResolver;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.NoHandlerFoundException;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -35,6 +32,11 @@ import java.util.List;
 public class WebConfigurer extends WebMvcConfigurationSupport {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(WebConfigurer.class);
+
+    /**
+     * TODO  修改为自己的需求
+     */
+    private static final String IZATION = "CHUCHEN";
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -68,6 +70,39 @@ public class WebConfigurer extends WebMvcConfigurationSupport {
         converter.setFastJsonConfig(config);
         converter.setDefaultCharset(Charset.forName("UTF-8"));
         converters.add(converter);
+    }
+
+    /**
+     * 添加拦截器
+     */
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+            registry.addInterceptor(new HandlerInterceptorAdapter() {
+                @Override
+                public boolean preHandle(HttpServletRequest request,
+                                         HttpServletResponse response, Object handler) throws Exception {
+                    String ization = request.getHeader("ization");
+                    if(IZATION.equals(ization)){
+                        return true;
+                    }else{
+                        RetResult<Object> result = new RetResult<>();
+                        result.setCode(RetCode.UNAUTHORIZED).setMsg("签名认证失败");
+                        responseResult(response, result);
+                        return false;
+                    }
+                }
+            });
+    }
+
+    private void responseResult(HttpServletResponse response, RetResult<Object> result) {
+        response.setCharacterEncoding("UTF-8");
+        response.setHeader("Content-type", "application/json;charset=UTF-8");
+        response.setStatus(200);
+        try {
+            response.getWriter().write(JSON.toJSONString(result, SerializerFeature.WriteMapNullValue));
+        } catch (IOException ex) {
+            LOGGER.error(ex.getMessage());
+        }
     }
 
     private List<MediaType> getSupportedMediaTypes() {
