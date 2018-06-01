@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter4;
+import com.example.demo.core.interceptor.Interceptor1;
 import com.example.demo.core.ret.RetCode;
 import com.example.demo.core.ret.RetResult;
 import org.slf4j.Logger;
@@ -77,21 +78,25 @@ public class WebConfigurer extends WebMvcConfigurationSupport {
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-            registry.addInterceptor(new HandlerInterceptorAdapter() {
-                @Override
-                public boolean preHandle(HttpServletRequest request,
-                                         HttpServletResponse response, Object handler) throws Exception {
-                    String ization = request.getHeader("ization");
-                    if(IZATION.equals(ization)){
-                        return true;
-                    }else{
-                        RetResult<Object> result = new RetResult<>();
-                        result.setCode(RetCode.UNAUTHORIZED).setMsg("签名认证失败");
-                        responseResult(response, result);
-                        return false;
+            registry.addInterceptor(
+                //注意，HandlerInterceptorAdapter  这里可以修改为自己创建的拦截器
+                new Interceptor1() {
+                    @Override
+                    public boolean preHandle(HttpServletRequest request,
+                                             HttpServletResponse response, Object handler) throws Exception {
+                        String ization = request.getHeader("ization");
+                        if(IZATION.equals(ization)){
+                            return true;
+                        }else{
+                            RetResult<Object> result = new RetResult<>();
+                            result.setCode(RetCode.UNAUTHORIZED).setMsg("签名认证失败");
+                            responseResult(response, result);
+                            return false;
+                        }
                     }
                 }
-            });
+                //这里添加的是拦截的路径  /**为全部拦截
+            ).addPathPatterns("/userInfo/selectAlla");
     }
 
     private void responseResult(HttpServletResponse response, RetResult<Object> result) {
