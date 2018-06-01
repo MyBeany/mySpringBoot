@@ -26,6 +26,6 @@
 - [ **十六：添加多文件上传功能** ](https://juejin.im/post/5b0d3ac9f265da08de1f555e)
 - [ **十七：添加系统发送邮件功能** ](https://juejin.im/post/5b0d45b1f265da08cb7ef279)
 - [ **十八：添加项目启动时初始化资源功能** ](https://juejin.im/post/5b10c7686fb9a01e4508bb30)
-- [ **十九：添加拦截器功能** ](https://juejin.im/editor/posts/5b10cc706fb9a01e2d702c1d)
+- [ **十九：添加拦截器功能** ](https://juejin.im/post/5b10cc706fb9a01e2d702c1d)
 - [ **二十：添加导出Excel表格功能** ](https://juejin.im/post/5b10e5f3f265da6e44324ed3)
  **写文章不易，如对您有帮助，请帮忙点下Star** 
