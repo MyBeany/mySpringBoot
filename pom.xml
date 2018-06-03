@@ -201,6 +201,13 @@
 			<version>3.9</version>
 		</dependency>
 
+		<!-- 图片处理 -->
+		<dependency>
+			<groupId>net.coobird</groupId>
+			<artifactId>thumbnailator</artifactId>
+			<version>0.4.8</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
