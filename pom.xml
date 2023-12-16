@@ -222,7 +222,7 @@
 	<repositories>
 		<repository>
 			<id>aliyun-repos</id>
-			<url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+			<url>https://maven.aliyun.com/nexus/content/groups/public/</url>
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
@@ -234,14 +234,14 @@
 			</snapshots>
 			<id>jcenter-releases</id>
 			<name>jcenter</name>
-			<url>http://jcenter.bintray.com</url>
+			<url>https://jcenter.bintray.com</url>
 		</repository>
 	</repositories>
 
 	<pluginRepositories>
 		<pluginRepository>
 			<id>aliyun-plugin</id>
-			<url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+			<url>https://maven.aliyun.com/nexus/content/groups/public/</url>
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
